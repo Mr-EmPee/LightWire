@@ -1,0 +1,32 @@
+### IntelliJ IDEA ###
+.idea
+out/
+
+### Eclipse ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+bin/
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+
+### VS Code ###
+.vscode/
+
+### Mac OS ###
+.DS_Store
+
+### Gradle ###
+build/
+.gradle
+!gradle/wrapper/gradle-wrapper.jar
+gradle.properties
