@@ -3,7 +3,6 @@ package io.github.empee.lightwire.utils;
 import lombok.SneakyThrows;
 import lombok.experimental.UtilityClass;
 
-import java.io.File;
 import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.jar.JarFile;
@@ -16,12 +15,12 @@ public class PackageScanner {
   public List<? extends Class<?>> findAll(String basePackage, ClassLoader classLoader) {
     try(var jar = new JarFile(JarUtils.getJar())) {
       var fileFormat = ".class";
-      var packagePath = basePackage.replace(".", File.separator);
 
-      return JarUtils.getContentFromJar(jar, packagePath).stream().map(ZipEntry::getName)
+      return JarUtils.getContentFromJar(jar, basePackage.replace(".", "/")).stream()
+          .map(ZipEntry::getName)
           .filter(c -> c.endsWith(fileFormat))
           .map(c -> c.substring(0, c.length() - fileFormat.length()))
-          .map(c -> c.replace(File.separator, "."))
+          .map(c -> c.replace("/", "."))
           .map(c -> getClassWithoutLoadingIt(c, classLoader))
           .toList();
     }
