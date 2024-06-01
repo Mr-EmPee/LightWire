@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 public class LightWire {
 
@@ -55,7 +56,7 @@ public class LightWire {
     return (List<T>) components.stream()
         .filter(c -> clazz.isAssignableFrom(c.getClazz()))
         .map(c -> c.getInstance(this))
-        .toList();
+        .collect(Collectors.toList());
   }
 
   public void load() {

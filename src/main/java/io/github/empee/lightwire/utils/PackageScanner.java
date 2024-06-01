@@ -6,6 +6,7 @@ import lombok.experimental.UtilityClass;
 import java.lang.annotation.Annotation;
 import java.util.List;
 import java.util.jar.JarFile;
+import java.util.stream.Collectors;
 import java.util.zip.ZipEntry;
 
 @UtilityClass
@@ -22,7 +23,7 @@ public class PackageScanner {
           .map(c -> c.substring(0, c.length() - fileFormat.length()))
           .map(c -> c.replace("/", "."))
           .map(c -> getClassWithoutLoadingIt(c, classLoader))
-          .toList();
+          .collect(Collectors.toList());
     }
   }
 
@@ -31,7 +32,7 @@ public class PackageScanner {
   ) {
     return findAll(basePackage, classLoader).stream()
         .filter(c -> c.isAnnotationPresent(annotation))
-        .toList();
+        .collect(Collectors.toList());
   }
 
   @SneakyThrows

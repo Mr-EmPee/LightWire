@@ -6,7 +6,7 @@ plugins {
 
 version = findProperty("tag") ?: "0.0.3-SNAPSHOT"
 
-java.toolchain.languageVersion.set(JavaLanguageVersion.of(17))
+java.toolchain.languageVersion.set(JavaLanguageVersion.of(11))
 
 mavenPublishing {
   coordinates("io.github.mr-empee", "lightwire", version.toString())

@@ -11,6 +11,7 @@ import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor(staticName = "of")
 public class Wirer {
@@ -38,7 +39,7 @@ public class Wirer {
       var collectionType = getCollectionType(parameter.getParameterizedType());
       return findComponentsByClass(collectionType).stream()
           .map(d -> d.getInstance(lightWire))
-          .toList();
+          .collect(Collectors.toList());
     }
 
     var components = findComponentsByClass(parameter.getType());
@@ -56,7 +57,7 @@ public class Wirer {
   private List<Component> findComponentsByClass(Class<?> clazz) {
     return lightWire.getComponents().stream()
         .filter(c -> clazz.isAssignableFrom(c.getClazz()))
-        .toList();
+        .collect(Collectors.toList());
   }
 
   private Class<?> getCollectionType(Type type) {
