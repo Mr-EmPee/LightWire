@@ -22,25 +22,25 @@ public class LightWire {
    * Helper method that creates an instance of LightWire and also register all the components
    * class that it is able to find inside the package
    */
-  public static LightWire of(String scan) {
+  public static LightWire of(String scan, Class<?> initClass) {
     var ioc = new LightWire();
 
-    var providers = PackageScanner.findAllWithAnnotation(scan, ioc.getClass().getClassLoader(), LightWired.class);
+    var providers = PackageScanner.findAllWithAnnotation(scan, initClass, LightWired.class);
     for (Class<?> provider : providers) {
-      ioc.registerComponents(provider);
+      ioc.registerComponent(provider);
     }
 
     return ioc;
   }
 
-  public static LightWire of(Package scan) {
-    return of(scan.getName());
+  public static LightWire of(Class<?> initClass) {
+    return of(initClass.getPackageName(), initClass);
   }
 
   /**
    * Mark a class that is used by LightWire
    */
-  public void registerComponents(Class<?> clazz) {
+  public void registerComponent(Class<?> clazz) {
     components.add(Component.lightWired(clazz));
   }
 

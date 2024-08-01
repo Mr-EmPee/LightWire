@@ -18,8 +18,8 @@ import java.util.stream.Collectors;
 public class JarUtils {
 
   @SneakyThrows
-  public File getJar() {
-    return new File(JarUtils.class.getProtectionDomain().getCodeSource().getLocation().toURI());
+  public File getSourcePath(Class<?> clazz) {
+    return new File(clazz.getProtectionDomain().getCodeSource().getLocation().toURI());
   }
 
   public List<JarEntry> getContentFromJar(JarFile jarFile, String path) {
