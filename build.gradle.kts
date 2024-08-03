@@ -4,7 +4,7 @@ plugins {
   id("com.vanniktech.maven.publish") version "0.28.0"
 }
 
-version = findProperty("tag") ?: "0.0.5-SNAPSHOT"
+version = findProperty("tag") ?: "0.0.6-SNAPSHOT"
 
 java.toolchain.languageVersion.set(JavaLanguageVersion.of(11))
 
