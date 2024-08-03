@@ -43,7 +43,7 @@ public class PackageScanner {
           .map(Path::toString)
           .filter(f -> f.endsWith(fileFormat))
           .map(c -> c.substring(sourceDirLength, c.length() - fileFormat.length()))
-          .map(c -> c.replace("/", "."))
+          .map(c -> c.replace(File.separator, "."))
           .collect(Collectors.toList());
     }
   }
