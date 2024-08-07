@@ -19,7 +19,7 @@ implementation("io.github.mr-empee:lightwire:0.0.5")
 
 1. Initialize the IoC container inside you main class file
 ```java
-  private final LightWire iocContainer = LightWire.of("my.base.package");
+  private final LightWire iocContainer = LightWire.of(MyBootstrapClazz.class);
 ```
 2. Invoke the loading method to eagerly load all the classes annotated with `@LightWired`
 ```java
