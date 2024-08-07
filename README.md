@@ -1,4 +1,4 @@
-# LightWire
+# LightWire ![Maven Central Version](https://img.shields.io/maven-central/v/io.github.mr-empee/lightwire)
 A lightweight InvesrionOfControl container, share and create instances of your classes with ease!
 
 ### Maven Installation
@@ -6,13 +6,13 @@ A lightweight InvesrionOfControl container, share and create instances of your c
 <dependency>
     <groupId>io.github.mr-empee</groupId>
     <artifactId>lightwire</artifactId>
-    <version>0.0.5</version>
+    <version>{version}</version>
 </dependency>
 ```
 
 ### Gradle Installation
 ```kotlin
-implementation("io.github.mr-empee:lightwire:0.0.5")
+implementation("io.github.mr-empee:lightwire:{version}")
 ```
 
 ## Usage
